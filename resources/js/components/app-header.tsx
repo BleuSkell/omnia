@@ -106,13 +106,13 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
         <>
             <div className="flex w-full justify-center">
                 <div className={cn(
-                    "border-b border-sidebar-border/80 flex items-center h-16 transition-all duration-300",
+                    "bg-black text-white rounded-md mt-8 p-6 flex items-center h-16 transition-all duration-300",
                     isMenuOpen ? "w-[90%]" : "w-[40%]"
                 )}>
                     {/* Desktop Navigation */}
                     <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
-                        <DropdownMenu 
-                            open={isDropdownOpen} 
+                        <DropdownMenu
+                            open={isDropdownOpen}
                             onOpenChange={(open) => {
                                 if (!open) {
                                     setIsDropdownOpen(false);
@@ -122,7 +122,7 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                         >
                             <DropdownMenuTrigger asChild>
                                 <Button
-                                    variant="ghost" 
+                                    variant="ghost"
                                     className="p-1"
                                     onClick={handleMenuToggle}
                                 >
@@ -134,7 +134,10 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                 "animate-in fade-in-0 slide-in-from-top-2 flex justify-between transition-all duration-300",
                                 isMenuOpen ? "w-[90vw]" : "w-[40vw]"
                             )} align="start">
-                                <div>
+                                <div
+                                    className="w-full bg-gray-400 rounded-md"
+                                >
+                                    <h4>OUR PRODUCTS</h4>
                                     {productNavItems.map((item) => (
                                         <Link
                                             key={item.title}
@@ -148,7 +151,9 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                         </Link>
                                     ))}
                                 </div>
-                                <div>
+                                <div
+                                    className="w-full"
+                                >
                                     {exploreNavItems.map((item) => (
                                         <Link
                                             key={item.title}
@@ -169,6 +174,14 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                     <div className="ml-auto flex items-center space-x-2">
                         <div className="relative flex items-center space-x-1">
                             <div className="ml-1 hidden gap-1 lg:flex">
+                                <h1>Omnia</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="ml-auto flex items-center space-x-2">
+                        <div className="relative flex items-center space-x-1">
+                            <div className="ml-1 hidden gap-1 lg:flex">
                                 {rightNavItems.map((item) => (
                                     <TooltipProvider
                                         key={item.title}
@@ -180,11 +193,11 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                                     href={toUrl(item.href)}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-0 text-sm font-medium text-accent-foreground ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                    className="group inline-flex h-9 items-center justify-center rounded-md bg-transparent p-2 text-sm font-medium text-accent-foreground ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                                                 >
                                                     {item.title}
                                                 </a>
-                                            </TooltipTrigger>   
+                                            </TooltipTrigger>
                                         </Tooltip>
                                     </TooltipProvider>
                                 ))}
