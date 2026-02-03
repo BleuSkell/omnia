@@ -10,7 +10,7 @@ import youtubeIcon from '../../../resources/img/navbar/youtube-icon.png';
 import spotifyIcon from '../../../resources/img/navbar/spotify-icon.png';
 import featuredImage from '../../../resources/img/featured/everywhere-nowhere-cover.png';
 import AppLogo from './app-logo';
-import '../../css/navbar.css';
+import '../../css/app-header.css';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
