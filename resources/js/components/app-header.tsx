@@ -1,41 +1,20 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, Layout, LayoutGrid, Menu, Search } from 'lucide-react';
+import { LayoutGrid, Menu } from 'lucide-react';
+import { useState } from 'react';
 import { Breadcrumbs } from '@/components/breadcrumbs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuList,
-    navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from '@/components/ui/sheet';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { UserMenuContent } from '@/components/user-menu-content';
 import { useCurrentUrl } from '@/hooks/use-current-url';
 import { useInitials } from '@/hooks/use-initials';
-import { cn, toUrl } from '@/lib/utils';
-import { dashboard } from '@/routes';
+import { cn } from '@/lib/utils';
+import { dashboard, login, register } from '@/routes';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import AppLogo from './app-logo';
-import AppLogoIcon from './app-logo-icon';
-import { useState } from 'react';
+import '../../css/nav-rotate.css';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
@@ -68,17 +47,6 @@ const exploreNavItems: NavItem[] = [
     },
 ];
 
-const rightNavItems: NavItem[] = [
-    {
-        title: 'Login',
-        href: '/login',
-    },
-    {
-        title: 'Register',
-        href: '/register',
-    }
-];
-
 const activeItemStyles =
     'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100';
 
@@ -106,11 +74,11 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
         <>
             <div className="flex w-full justify-center">
                 <div className={cn(
-                    "bg-black text-white rounded-md mt-8 p-6 flex items-center h-16 transition-all duration-300",
+                    "bg-black text-white rounded-md mt-8 p-6 flex items-center justify-between h-16 transition-all duration-300",
                     isMenuOpen ? "w-[90%]" : "w-[40%]"
                 )}>
                     {/* Desktop Navigation */}
-                    <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
+                    <div className="hidden h-full items-center lg:flex">
                         <DropdownMenu
                             open={isDropdownOpen}
                             onOpenChange={(open) => {
@@ -123,10 +91,13 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                             <DropdownMenuTrigger asChild>
                                 <Button
                                     variant="ghost"
-                                    className="p-1"
+                                    className="p-1 !ring-0 text-white bg-none text-xl tracking-wide
+                                     hover:bg-neutral-800 hover:text-white
+                                     focus:bg-neutral-800 focus:text-white
+                                     active:bg-neutral-800 active:text-white"
                                     onClick={handleMenuToggle}
                                 >
-                                    <Menu className="h-5 w-5"/>
+                                    <Menu className="!h-6 !w-6"/>
                                     Menu
                                 </Button>
                             </DropdownMenuTrigger>
@@ -171,36 +142,48 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                         </DropdownMenu>
                     </div>
 
-                    <div className="ml-auto flex items-center space-x-2">
-                        <div className="relative flex items-center space-x-1">
-                            <div className="ml-1 hidden gap-1 lg:flex">
-                                <h1>Omnia</h1>
+                    <div className="absolute left-1/2 -translate-x-1/2">
+                        <div className="relative flex items-center">
+                            <div className="hidden lg:flex w-34">
+                                <Link
+                                    href="/"
+                                >
+                                    <AppLogo/>
+                                </Link>
                             </div>
                         </div>
                     </div>
 
-                    <div className="ml-auto flex items-center space-x-2">
-                        <div className="relative flex items-center space-x-1">
+                    <div className="flex items-center">
+                        <div className="relative flex items-center">
                             <div className="ml-1 hidden gap-1 lg:flex">
-                                {rightNavItems.map((item) => (
-                                    <TooltipProvider
-                                        key={item.title}
-                                        delayDuration={0}
+                                {auth.user ? (
+                                    <Link
+                                        href={dashboard()}
+                                        className="dashboard-link"
                                     >
-                                        <Tooltip>
-                                            <TooltipTrigger>
-                                                <a
-                                                    href={toUrl(item.href)}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="group inline-flex h-9 items-center justify-center rounded-md bg-transparent p-2 text-sm font-medium text-accent-foreground ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-                                                >
-                                                    {item.title}
-                                                </a>
-                                            </TooltipTrigger>
-                                        </Tooltip>
-                                    </TooltipProvider>
-                                ))}
+                                        Dashboard
+                                    </Link>
+                                ) : (
+                                    <>
+                                        <Link
+                                            href={login()}
+                                            className="account-button bg-neutral-600 px-8 py-3 rounded-full font-medium tracking-wide text-lg overflow-hidden"
+                                        >
+                                            <span className="button-text inline-block">
+                                                Login
+                                            </span>
+                                        </Link>
+                                        <Link
+                                            href={register()}
+                                            className="account-button bg-green-400 px-6 py-3 rounded-md text-black font-medium tracking-wide text-lg overflow-hidden"
+                                        >
+                                            <span className="button-text inline-block">
+                                                Register
+                                            </span>
+                                        </Link>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>

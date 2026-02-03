@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'ABSPATH' => env('ABSPATH'),
+    'VITE_ABSPATH' => env('VITE_ABSPATH'),
+
 ];
