@@ -1,6 +1,6 @@
 .account-button:hover .button-text {
-    animation: orbit .3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-    transform-origin: 50% 700%;
+    animation: orbit .5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    transform-origin: 50% 800%;
 }
 
 @keyframes orbit {
