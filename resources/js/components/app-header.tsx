@@ -1,19 +1,16 @@
 import { Link, usePage } from '@inertiajs/react';
-import { LayoutGrid, Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Button } from '@/components/ui/button';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
+import instagramIcon from '../../../resources/img/navbar/instagram-icon.png';
+import youtubeIcon from '../../../resources/img/navbar/youtube-icon.png';
+import spotifyIcon from '../../../resources/img/navbar/spotify-icon.png';
+import featuredImage from '../../../resources/img/featured/everywhere-nowhere-cover.png';
 import AppLogo from './app-logo';
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import '../../css/nav-rotate.css';
+import '../../css/navbar.css';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
@@ -21,27 +18,26 @@ type Props = {
 
 const productNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-    {
-        title: 'Projects',
+        title: 'Desktop Companion (WIP)',
         href: '#',
     },
     {
-        title: 'Docs',
+        title: 'The Library (WIP)',
+        href: '#',
+    },
+    {
+        title: 'Omnia Storage (WIP)',
         href: '#',
     },
 ];
 
 const exploreNavItems: NavItem[] = [
     {
-        title: 'About',
+        title: 'About (WIP)',
         href: '#',
     },
     {
-        title: 'Contact',
+        title: 'Contact (WIP)',
         href: '#',
     },
 ];
@@ -66,7 +62,15 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
 
     return (
         <>
-            <div className="flex w-full justify-center">
+            {/* Overlay */}
+            {isMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+                    onClick={handleMenuToggle}
+                />
+            )}
+            
+            <div className="flex w-full justify-center fixed z-50">
                 <div className={cn(
                     "bg-black text-white rounded-md mt-8 p-2 flex-col items-center justify-between transition-all duration-300",
                     isMenuOpen ? "w-[90%] p-4" : "w-[40%]"
@@ -75,11 +79,12 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                     <div className={cn("flex items-center justify-between", isMenuOpen ? "border-b-2 border-neutral-700 pb-4" : "")}>
                         <div className="hidden h-full items-center lg:flex">
                             <Button
+                                variant="ghost"
                                 className="menu-button p-1 !ring-0 text-white bg-none text-xl tracking-wide
                                 hover:bg-neutral-800 hover:text-white"
                                 onClick={handleMenuToggle}
                             >
-                                <Menu className="!h-6 !w-6"/>
+                                {isMenuOpen ? <X className="!h-6 !w-6"/> : <Menu className="!h-6 !w-6"/>}
                                 Menu
                             </Button>
                         </div>
@@ -133,44 +138,92 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
 
                     <div
                         className={cn(
-                            "hidden p-4 bg-black flex justify-between",
+                            "hidden pt-4 bg-black flex flex-col",
                             isMenuOpen ? "flex" : "hidden"
                         )}
-                    >
-                        <div className="flex flex-col">
-                            <h4>OUR PRODUCTS</h4>
-                            {productNavItems.map((item) => (
-                                <Link
-                                    key={item.title}
-                                    href={item.href}
-                                    className="cursor-pointer"
-                                >
-                                    {item.title}
-                                </Link>
-                            ))}
+                    >   
+                        <div className="flex justify-between">
+                            <div className="flex flex-col bg-neutral-800 w-full p-12 rounded-md">
+                                <h4 className="text-neutral-300">OUR PRODUCTS</h4>
+                                <div className="mt-8 flex flex-col gap-10">
+                                    {productNavItems.map((item) => (
+                                        <Link
+                                            key={item.title}
+                                            href={item.href}
+                                            className="cursor-pointer flex text-3xl tracking-wide border-b-2 border-neutral-700 w-full pb-4"
+                                        >
+                                            <span 
+                                                className="animated-underline"
+                                            >
+                                                {item.title}
+                                            </span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="flex flex-col w-full p-12 rounded-md">
+                                <h4 className="text-neutral-300">EXPLORE</h4>
+                                <div className="mt-8 flex flex-col gap-10">
+                                    {exploreNavItems.map((item) => (
+                                        <Link
+                                            key={item.title}
+                                            href={item.href}
+                                            className="cursor-pointer flex text-3xl tracking-wide border-b-2 border-neutral-700 w-full pb-4"
+                                        >
+                                            <span 
+                                                className="animated-underline"
+                                            >
+                                                {item.title}
+                                            </span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="flex flex-col bg-neutral-800 w-full p-12 rounded-md">
+                                <h4 className="text-neutral-300">FEATURED</h4>
+
+                                <div>
+                                    <a href="#">
+                                        <img src={featuredImage} alt="Everywhere Nowhere Cover" className="mt-8 rounded-md shadow-lg w-4/6"/>
+                                    </a>
+                                    <h3 className="text-2xl font-semibold mt-4">Everywhere and nowhere</h3>
+                                    <p className="mt-2 text-neutral-400">SEERVS</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <h4>EXPLORE</h4>
-                            {exploreNavItems.map((item) => (
-                                <Link
-                                    key={item.title}
-                                    href={item.href}
-                                    className="cursor-pointer"
+
+                        <div className="flex flex-col items-end py-8">
+                            <div className="flex">
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    className="w-[70px] mr-4"
                                 >
-                                    {item.title}
-                                </Link>
-                            ))}
+                                    <img src={spotifyIcon} alt="spotify"/>
+                                </a>
+                                
+                                <a
+                                    href="https://www.instagram.com/seervska/"
+                                    target="_blank"
+                                    className="w-[70px] mr-4"
+                                >
+                                    <img src={instagramIcon} alt="instagram"/>
+                                </a>
+
+                                <a
+                                    href="https://www.youtube.com/@SEERVS"
+                                    target="_blank"
+                                    className="w-[70px]"
+                                >
+                                    <img src={youtubeIcon} alt="youtube"/>
+                                </a>
+                            </div>
+
+                            <h4 className="text-sm text-neutral-500 mt-4">"AI could never replicate or even come near human creations."</h4>
                         </div>
                     </div>
                 </div>
             </div>
-            {breadcrumbs.length > 1 && (
-                <div className="flex w-full border-b border-sidebar-border/70">
-                    <div className="mx-auto flex h-12 w-full items-center justify-start px-4 text-neutral-500 md:max-w-7xl">
-                        <Breadcrumbs breadcrumbs={breadcrumbs} />
-                    </div>
-                </div>
-            )}
         </>
     );
 }
