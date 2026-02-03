@@ -1,5 +1,25 @@
+.collapsed-navbar {
+    width: 40%;
+}
+
+.expanded-navbar {
+    width: 90%;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1290px) {
+    .collapsed-navbar {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1290px) and (max-width: 1590px) {
+    .collapsed-navbar {
+        width: 50%;
+    }
+}
+
 .account-button:hover .button-text {
-    animation: orbit .5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation: orbit 0.35s cubic-bezier(0.65, 0, 0.35, 1) forwards;
     transform-origin: 50% 800%;
 }
 
