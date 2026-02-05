@@ -1,6 +1,8 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
@@ -48,6 +50,12 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
     const page = usePage<SharedData>();
     const { auth } = page.props;
 
+    useEffect(() => {
+        AOS.init({
+            once: true,
+        });
+    }, []);
+
     const handleMenuToggle = () => {
         if (!isMenuOpen) {
             setIsMenuOpen(true);
@@ -71,9 +79,9 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
             )}
 
             {/* Mobile Navigation */}
-            <div className={cn("lg:hidden flex w-full justify-center fixed z-50", isMenuOpen ? "h-full" : "")}>
+            <div data-aos="fade-down" className={cn("lg:hidden flex w-full justify-center fixed z-50", isMenuOpen ? "h-full" : "")}>
                 <div className={cn(
-                    "bg-black text-white rounded-md mt-4 p-2 flex-col items-center justify-between transition-all duration-300",
+                    "bg-black text-white font-text rounded-md mt-4 p-2 flex-col items-center justify-between transition-all duration-300",
                     isMenuOpen ? "w-full p-0 mt-0 rounded-none" : "w-[90%]"
                 )}>
                     <div className={cn("flex items-center justify-between", isMenuOpen ? "border-b-2 border-neutral-700 p-4" : "")}>
@@ -218,9 +226,9 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex w-full justify-center fixed z-50">
+            <div data-aos="fade-down" className="hidden lg:flex w-full justify-center fixed z-50">
                 <div className={cn(
-                    "bg-black text-white rounded-md mt-8 p-2 flex-col items-center justify-between transition-all duration-300",
+                    "bg-black text-white font-text rounded-md mt-8 p-2 flex-col items-center justify-between transition-all duration-300",
                     isMenuOpen ? "expanded-navbar p-4" : "collapsed-navbar"
                 )}>
                     <div className={cn("flex items-center justify-between", isMenuOpen ? "border-b-2 border-neutral-700 pb-4" : "")}>

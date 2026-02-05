@@ -1,7 +1,9 @@
 import { App, Head, Link, usePage } from '@inertiajs/react';
+import { useEffect } from 'react';
 import { dashboard, login, register } from '@/routes';
 import type { SharedData } from '@/types';
 import { AppHeader } from '@/components/app-header';
+import { RadialCarousel } from '@/components/radial-carousel';
 
 export default function Welcome({
     canRegister = true,
@@ -12,23 +14,20 @@ export default function Welcome({
 
     return (
         <>
-            <Head title="Welcome">
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link
-                    href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
-                    rel="stylesheet"
-                />
+            <Head title="All-in-one site">
             </Head>
             <AppHeader/>
-            <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8">
-                <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-                </header>
-                <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
-                    <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
-                    </main>
+            <main className="min-h-screen bg-white">
+                <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
+                    <h1 className="text-9xl font-bold tracking-wide font-heading">Welcome to Omnia</h1>
+                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-text">
+                        A platform packed with everything specific and non-specific! 
+                        Including but not limited to: a components library, storage, a desktop companion, and much more!
+                    </h3>
                 </div>
-                <div className="hidden h-14.5 lg:block"></div>
-            </div>
+                
+                <RadialCarousel/>
+            </main>
         </>
     );
 }

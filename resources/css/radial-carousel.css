@@ -1,0 +1,27 @@
+.carousel-outer {
+    overflow: hidden;
+    padding-top: 300px;
+    margin-top: -300px;
+}
+
+.carousel-wrapper {
+    display: grid;
+    place-items: center;
+    height: 50vmin;
+    width: 500vmin;
+}
+
+.carousel-container {
+    width: 500vmin;
+    height: 500vmin;
+    border-radius: 50%;
+    animation: spin 70s linear infinite reverse;
+    --gap: calc(100% / var(--count));
+}
+
+.carousel-item {
+    offset: padding-box;
+    transform: rotate(360deg);
+    offset-distance: calc((sibling-index() - 1) * var(--gap));
+    width: 500px;
+}

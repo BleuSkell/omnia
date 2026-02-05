@@ -8,6 +8,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+    --font-heading: 
+        'Roboto Slab', ui-serif, serif;
+
+    --font-subheading:
+        'Roboto Slab', ui-serif, serif;
+
+    --font-text:
+        'Roboto', ui-sans-serif, sans-serif;
+    
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
