@@ -17,31 +17,31 @@ const featuresCarousel = [
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Radial carousel',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Dynamic navbar',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Drag and drop',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Opac-dynmap syncing',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Animations',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Art hub',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Blocky Architecture',
         thumbnail: storage,
     },
     {
@@ -81,7 +81,7 @@ const featuresCarousel = [
 export function RadialCarousel() {
     return (
         <>
-            <div className="carousel-outer flex justify-center overflow-hidden">
+            <div className="carousel-outer flex justify-center overflow-hidden z-1">
                 <div className="carousel-wrapper">
                     <div className="carousel-container" style={{ "--count": featuresCarousel.length }}>
                         {featuresCarousel.map((items) => {

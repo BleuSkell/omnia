@@ -15,7 +15,7 @@
     width: 500vmin;
     height: 500vmin;
     border-radius: 50%;
-    animation: spin 70s linear infinite reverse;
+    animation: spin 130s linear infinite reverse;
     --gap: calc(100% / var(--count));
 }
 
