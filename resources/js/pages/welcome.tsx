@@ -2,7 +2,7 @@ import { Head, usePage } from '@inertiajs/react';
 import type { SharedData } from '@/types';
 import { AppHeader } from '@/components/app-header';
 import { RadialCarousel } from '@/components/radial-carousel';
-import { NewsCarousel } from '@/components/news-carousel';
+import { VerticalCarousel } from '@/components/vertical-carousel';
 import featuredImage from '../../img/featured/everywhere-nowhere-cover.png';
 
 export default function Welcome({
@@ -47,7 +47,7 @@ export default function Welcome({
                         <img src={featuredImage} />
                     </div>
 
-                    <NewsCarousel/>
+                    <VerticalCarousel/>
                 </div>
             </main>
         </>

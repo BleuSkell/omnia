@@ -4,7 +4,7 @@ import '../../css/circular-cursor.css';
 export function CircularCursor() {
     useEffect(() => {
         const cursor = document.querySelector('.custom-cursor');
-        const container = document.querySelector('.cursor-container');
+        const container = document.querySelector('.custom-cursor-container');
         
         const move = (e) => {
             cursor.style.top = `${e.clientY}px`;
