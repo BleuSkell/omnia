@@ -2,9 +2,8 @@ import { Head, usePage } from '@inertiajs/react';
 import type { SharedData } from '@/types';
 import { AppHeader } from '@/components/app-header';
 import { RadialCarousel } from '@/components/radial-carousel';
-import storage from '../../img/features-carousel/incoming.png';
-import featuredImage from '../../../resources/img/featured/everywhere-nowhere-cover.png';
-import selfie from '../../img/man-temp.png';
+import { NewsCarousel } from '@/components/news-carousel';
+import featuredImage from '../../img/featured/everywhere-nowhere-cover.png';
 
 export default function Welcome({
     canRegister = true,
@@ -20,8 +19,8 @@ export default function Welcome({
             <AppHeader/>
             <main className="min-h-screen bg-white">
                 <div className="flex flex-col items-center justify-center text-center min-h-screen space-y-6">
-                    <h1 className="text-9xl font-bold tracking-wide font-heading">Welcome to Omnia</h1>
-                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-text">
+                    <h1 className="text-9xl font-medium tracking-wide font-roboto">Welcome to Omnia</h1>
+                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-roboto">
                         A platform packed with everything specific and non-specific! 
                         Including but not limited to: a components library, storage, a desktop companion, and much more!
                     </h3>
@@ -30,39 +29,25 @@ export default function Welcome({
                 <RadialCarousel/>
 
                 <div className="flex justify-center">
-                    <h3 className="text-5xl font-medium font-subheading tracking-wide text-center w-1/2 mb-32">
+                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-roboto w-1/2">
                         Omnia is an ever-evolving personal project with a wide variety of features. 
                         My goal with this platform is to better myself and create helpful tools for myself and others.
                     </h3>
                 </div>
-            
-                <div className="bg-black p-8">
-                    <h5 className="text-white mb-8">Latest news</h5>
 
-                    <img src={selfie} alt="selfie" className="absolute flex justify-self-end w-1/6"/>
-                        
-                    <div className="flex items-center justify-between">
-                        <div className="flex flex-col text-white">
-                            <p>^</p>
-                            <p>X</p>
-                            <p>|</p>
+                <div className="flex justify-between mx-8 my-32">
+                    <div 
+                        className="flex flex-col bg-indigo-500 px-8 pt-8 rounded-md w-[35%] hover:cursor-pointer"
+                    >
+                        <div className="text-white">
+                            <p className="font-cursive text-3xl mb-2">Created by</p>
+                            <h5 className="font-roboto text-5xl mb-2 tracking-wide">SEERVS</h5>
                         </div>
 
-                        <div className="flex bg-white p-4 text-black rounded-md w-[95%]">
-                            <a href="#" className="w-1/6">
-                                <img src={featuredImage} className="rounded-md"/>
-                            </a>
-                            
-                            <div className="flex flex-col justify-between ml-8">
-                                <div className="flex">
-                                    <p className="bg-black text-white rounded-md p-2 mr-2">1 WEEK AGO</p>
-                                    <p className="bg-black text-white rounded-md p-2">NEW SONG</p>
-                                </div>
-                                <p>Everywhere and nowhere released</p>
-                                <p>CREATIVE & PERSONAL</p>
-                            </div>
-                        </div>
+                        <img src={featuredImage} />
                     </div>
+
+                    <NewsCarousel/>
                 </div>
             </main>
         </>
