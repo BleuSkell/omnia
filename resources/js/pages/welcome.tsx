@@ -37,7 +37,7 @@ export default function Welcome({
 
                 <div className="flex justify-between mx-8 my-32">
                     <div 
-                        className="flex flex-col bg-indigo-500 px-8 pt-8 rounded-md w-[35%] hover:cursor-pointer"
+                        className="flex flex-col bg-indigo-500 px-8 pt-8 rounded-md w-1/2 mr-8 hover:cursor-pointer"
                     >
                         <div className="text-white">
                             <p className="font-cursive text-3xl mb-2">Created by</p>
