@@ -1,37 +1,29 @@
-.slide-up {
-    animation: slideUp 0.4s ease;
-}
-
-.slide-down {
+.vertical-carousel-inner.down .vertical-carousel-item {
     animation: slideDown 0.4s ease;
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(-10%);
-    }
-    10% {
-        transform: translateY(-17%);
-    }
-    20% {
-        transform: translateY(-50%);
-    }
-    100% {
-        transform: translateY(-300%);
-    }
+.vertical-carousel-inner.up .vertical-carousel-item {
+    animation: slideUp 0.4s ease;
 }
 
 @keyframes slideDown {
     0% {
-        transform: translateY(10%);
-    }
-    10% {
-        transform: translateY(17%);
-    }
-    20% {
-        transform: translateY(50%);
+        transform: translateY(-100%);
+        opacity: 0;
     }
     100% {
-        transform: translateY(300%);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

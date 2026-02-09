@@ -23,63 +23,58 @@ const verticalCarouselItems = [
 export function VerticalCarousel() {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [slideAnimation, setSlideAnimation] = useState('');
 
-    const showNext = () => {
-        setSlideAnimation('slide-down');
-        setTimeout(() => {
-            setCurrentIndex((prevIndex) => 
-                prevIndex === verticalCarouselItems.length -1 ? 0 : prevIndex + 1
-            );
-            setSlideAnimation('');
-        }, 400);
-    };
+    const [index, setIndex] = useState(0);
+    const [direction, setDirection] = useState('');
 
-    const showPrev = () => {
-        setSlideAnimation('slide-up');
-        setTimeout(() => {
-            setCurrentIndex((prevIndex) => 
-                prevIndex === 0 ? verticalCarouselItems.length - 1 : prevIndex - 1
-            );
-            setSlideAnimation('');
-        }, 400);
-    };
+    const triggerAnimation = (dir, newIndex) => {
+        setDirection(dir);
+        setIndex(newIndex);
 
-    const currentItem = verticalCarouselItems[currentIndex];
+        setTimeout(() => setDirection(''), 400);
+    }
+
+    const nextItem = () => {
+        triggerAnimation('down', (index + 1) % verticalCarouselItems.length);
+    }
+
+    const prevItem = () => {
+        triggerAnimation('up', (index - 1 + verticalCarouselItems.length) % verticalCarouselItems.length);
+    }
 
     return (
         <>  
             <div className="vertical-carousel-container w-full relative">
-                <div className="vertical-carousel-controls absolute flex flex-col w-full h-full">
+                <div className="vertical-carousel-controls absolute flex flex-col w-full h-full z-10">
                     <div ref={prevRef} className="vertical-carousel-prev w-full h-full relative" data-cursor-content="↑">
-                        <button onClick={showPrev} className="w-full h-full cursor-none"/>
+                        <button onClick={prevItem} className="w-full h-full cursor-none"/>
                     </div>
 
                     <div ref={nextRef} className="vertical-carousel-next w-full h-full relative" data-cursor-content="↓">
-                        <button onClick={showNext} className="w-full h-full cursor-none"/>
+                        <button onClick={nextItem} className="w-full h-full cursor-none"/>
                     </div>
 
                     <CircularCursor targetRef={prevRef}/>
                     <CircularCursor targetRef={nextRef}/>
                 </div>
 
-                <div className="bg-black p-8 h-full rounded-full flex justify-center items-center overflow-hidden">
+                <div className={`vertical-carousel-inner relative bg-black p-8 h-full rounded-full flex justify-center items-center overflow-hidden ${direction}`}>
                     <div
-                        className={`vertical-carousel-item flex justify-between bg-white size-fit w-6/7 p-4 rounded-md ${slideAnimation}`}
+                        key={index}
+                        className="vertical-carousel-item absolute flex justify-between bg-white size-fit w-6/7 p-4 rounded-md"
                     >
                         <div className="flex flex-col justify-between">
                             <div className="flex">
-                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg mr-2">{currentItem.datePosted}</p>
-                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg">{currentItem.tag}</p>
+                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg mr-2">{verticalCarouselItems[index].datePosted}</p>
+                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg">{verticalCarouselItems[index].tag}</p>
                             </div>
-                            <p className="font-roboto text-3xl">{currentItem.title}</p>
-                            <p className="font-roboto text-2xl">{currentItem.category}</p>
+                            <p className="font-roboto text-3xl">{verticalCarouselItems[index].title}</p>
+                            <p className="font-roboto text-2xl">{verticalCarouselItems[index].category}</p>
                         </div>
                         
                         <div className="h-56 w-1/2 relative">
                             <img 
-                                src={currentItem.thumbnailImage}
+                                src={verticalCarouselItems[index].thumbnailImage}
                                 className="h-full w-full object-cover rounded-md"
                             />
                         </div>
