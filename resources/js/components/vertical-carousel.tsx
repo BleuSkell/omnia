@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import { CircularCursor } from '@/components/circular-cursor';
 import featuredImage from '../../img/featured/everywhere-nowhere-cover.png';
 
@@ -9,44 +10,68 @@ const verticalCarouselItems = [
         tag: 'new creative work',
         thumbnailImage: featuredImage,
     },
+    {   
+        datePosted: '01-01-2026',
+        title: 'Test item',
+        category: 'testing',
+        tag: 'Test item',
+        thumbnailImage: featuredImage,
+    },
 ];
 
 export function VerticalCarousel() {
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const showNext = () => {
+        setCurrentIndex((prevIndex) => 
+            prevIndex === verticalCarouselItems.length -1 ? 0 : prevIndex + 1
+        );
+    };
+
+    const showPrev = () => {
+        setCurrentIndex((prevIndex) => 
+            prevIndex === 0 ? verticalCarouselItems.length - 1 : prevIndex - 1
+        );
+    };
+
+    const currentItem = verticalCarouselItems[currentIndex];
+
     return (
         <>  
-            <div className="vertical-carousel-container custom-cursor-container flex relative items-center justify-between bg-black rounded-md w-[60%] p-8">
-                <div className="vertical-carousel-buttons flex flex-col absolute w-full h-full">
-                    <button className="prev-slide w-full h-full custom-cursor-container">
-                        <CircularCursor/>
-                    </button>
-                    <button className="next-slide w-full h-full custom-cursor-container">
-                        <CircularCursor/>
-                    </button>
+            <div className="vertical-carousel-container w-full relative">
+                <div className="vertical-carousel-controls absolute flex flex-col w-full h-full">
+                    <div ref={prevRef} className="vertical-carousel-prev w-full h-full relative" data-cursor-content="prev">
+                        <button onClick={showPrev} className="w-full h-full cursor-none"/>
+                    </div>
+
+                    <div ref={nextRef} className="vertical-carousel-next w-full h-full relative" data-cursor-content="next">
+                        <button onClick={showNext} className="w-full h-full cursor-none"/>
+                    </div>
+
+                    <CircularCursor targetRef={prevRef}/>
+                    <CircularCursor targetRef={nextRef}/>
                 </div>
 
-                <div className="vertical-carousel-items flex flex-col">
-                    {verticalCarouselItems.map((items) => {
-                        return (
-                            <div 
-                                key={items.title}
-                                className="vertical-carousel-item flex justify-between p-8 bg-white rounded-md"
-                            >
-                                <div className="flex flex-col justify-between">
-                                    <div className="flex">
-                                        <p className="bg-black text-white font-roboto rounded-md p-2 mr-2">{items.datePosted.toUpperCase()}</p>
-                                        <p className="bg-black text-white font-roboto rounded-md p-2">{items.tag.toUpperCase()}</p>
-                                    </div>
-                                    <p className="font-roboto tracking-wide text-2xl">{items.title}</p>
-                                    <p className="font-roboto tracking-wide text-xl">{items.category.toUpperCase()}</p>
-                                </div>
-                                <img src={featuredImage} alt={items.title} className="w-1/4 rounded-md" />
+                <div className="bg-black p-8 h-full rounded-full flex justify-center items-center">
+                    <div
+                        className="vertical-carousel-item flex justify-between bg-white size-fit w-4/5 p-4 rounded-md"
+                    >
+                        <div className="flex flex-col justify-between">
+                            <div className="flex">
+                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg mr-2">{currentItem.datePosted}</p>
+                                <p className="font-roboto text-lg bg-black p-2 text-white rounded-lg">{currentItem.tag}</p>
                             </div>
-                        );
-                    })}
-                </div>
-
-                <div className="vertical-carousel-bullets text-white ml-4">
-                    
+                            <p className="font-roboto text-4xl">{currentItem.title}</p>
+                            <p className="font-roboto text-2xl">{currentItem.category}</p>
+                        </div>
+                        
+                        <img 
+                            src={currentItem.thumbnailImage}
+                            className="w-1/6 rounded-md"
+                        />
+                    </div>
                 </div>
             </div>
         </>

@@ -1,8 +1,8 @@
-.custom-cursor-container {
+.circular-cursor-container {
     cursor: none;
 }
 
-.custom-cursor {
+.circular-cursor {
     opacity: 0;
     transition: opacity 0.2s ease-out, transform 0.08s ease-out;
     position: fixed;

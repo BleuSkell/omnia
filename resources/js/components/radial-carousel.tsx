@@ -45,35 +45,35 @@ const featuresCarousel = [
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 1',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 2',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 3',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 4',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 5',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 6',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 7',
         thumbnail: storage,
     },
     {
-        title: 'Omnia Storage',
+        title: 'Test 8',
         thumbnail: storage,
     },
 ];
