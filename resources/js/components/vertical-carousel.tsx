@@ -22,7 +22,7 @@ const verticalCarouselItems = [
         datePosted: '01-01-0003', 
         title: 'Test item 3', 
         category: 'testing', 
-        tag: 'Test item 3', 
+        tag: 'Test item', 
         thumbnailImage: featuredImage 
     },
 ];
@@ -45,12 +45,26 @@ export function VerticalCarousel() {
         }
     }, []);
 
+    // INFINITE NEXT/PREV
     const nextItem = () => {
-        setCurrentIndex((i) => Math.min(i + 1, verticalCarouselItems.length - 1));
+        setCurrentIndex((i) => (i + 1) % verticalCarouselItems.length);
     };
 
     const prevItem = () => {
-        setCurrentIndex((i) => Math.max(i - 1, 0));
+        setCurrentIndex((i) =>
+            (i - 1 + verticalCarouselItems.length) % verticalCarouselItems.length
+        );
+    };
+    
+    // INFINITE OFFSET CALC
+    const getOffset = (index) => {
+        const total = verticalCarouselItems.length;
+        let offset = index - currentIndex;
+
+        if (offset > total / 2) offset -= total;
+        if (offset < -total / 2) offset += total;
+
+        return offset;
     };
 
     return (
@@ -74,7 +88,8 @@ export function VerticalCarousel() {
                 >
                     <div className="relative h-full w-full flex justify-center">
                         {verticalCarouselItems.map((item, index) => {
-                            const offset = index - currentIndex;
+
+                            const offset = getOffset(index);
                             const top = offset * itemHeight;
 
                             return (
