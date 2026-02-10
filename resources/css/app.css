@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Birthstone');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -10,8 +12,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+    --font-kantum:
+        'Kantumruy', sans-serif;
+
+    --font-merriweather:
+        'Merriweather', ui-sans-serif, sans-serif;
+
     --font-roboto:
-        'Roboto', ui-sans-serif, sans-serif;
+        'Roboto', sans-serif;
 
     --font-cursive:
         'Birthstone', ui-sans-serif, sans-serif;
