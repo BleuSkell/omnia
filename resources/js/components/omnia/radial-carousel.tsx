@@ -1,7 +1,7 @@
-import companion from '../../img/features-carousel/car.jpg';
-import library from '../../img/features-carousel/BSD Cover.jpg';
-import storage from '../../img/features-carousel/incoming.png';
-import '../../css/radial-carousel.css';
+import companion from '../../../media/img/features-carousel/car.jpg';
+import library from '../../../media/img/features-carousel/BSD Cover.jpg';
+import storage from '../../../media/img/features-carousel/incoming.png';
+import '../../../css/radial-carousel.css';
 
 const featuresCarousel = [
     {

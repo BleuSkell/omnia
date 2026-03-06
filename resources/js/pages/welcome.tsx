@@ -1,9 +1,8 @@
 import { Head, usePage } from '@inertiajs/react';
 import type { SharedData } from '@/types';
-import { AppHeader } from '@/components/app-header';
-import { RadialCarousel } from '@/components/radial-carousel';
-import { VerticalCarousel } from '@/components/vertical-carousel';
-import featuredImage from '../../img/featured/everywhere-nowhere-cover.png';
+import { AppHeader } from '@/components/omnia/app-header';
+import { RadialCarousel } from '@/components/omnia/radial-carousel';
+import { PullDownScreen } from '@/components/omnia/pulldown-screen';
 
 export default function Welcome({
     canRegister = true,
@@ -16,39 +15,28 @@ export default function Welcome({
         <>
             <Head title="All-in-one site">
             </Head>
+
             <AppHeader/>
-            <main className="min-h-screen bg-white">
-                <div className="flex flex-col items-center justify-center text-center min-h-screen space-y-6">
-                    <h1 className="text-9xl font-medium tracking-wide font-merriweather mb-12">Welcome to Omnia</h1>
-                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-kantum">
-                        A platform packed with everything specific and non-specific! 
-                        Including but not limited to: a components library, storage, a desktop companion, and much more!
-                    </h3>
+            
+            <main className="min-h-screen bg-[#fffefc]">
+                <div className="flex flex-col items-center justify-center text-center min-h-screen space-y-6 mb-18">
+                    <h1 className="text-8xl font-medium tracking-wide mt-46 mb-22">Welcome to Omnia</h1>
+                    <p className="text-3xl font-light tracking-wide leading-relaxed text-center w-2/3">
+                        A website packed with all sorts of fun features and handy tools!
+                        Such as <span className="bg-neutral-200 px-2 my-2 rounded-full">The Library</span>, a place full of handy website components. 
+                        Omnia's <span className="bg-neutral-200 px-2 my-2 rounded-full">Desktop companion</span>, who keeps you company as you work.
+                        And many more fun little features and tools!
+                    </p>
                 </div>
                 
                 <RadialCarousel/>
 
-                <div className="flex justify-center">
-                    <h3 className="text-3xl font-medium tracking-wide text-center w-1/2 font-kantum w-1/2">
-                        Omnia is an ever-evolving personal project with a wide variety of features. 
-                        My goal with this platform is to better myself and create helpful tools for myself and others.
-                    </h3>
-                </div>
+                <p className="flex justify-self-center text-4xl font-light tracking-wide text-center w-1/2 w-1/2">
+                    Omnia is an ever expanding personal project with all sorts of features and tools. 
+                    Discover what Omnia means and what it can do.
+                </p>
 
-                <div className="flex justify-between mx-8 my-32">
-                    <div 
-                        className="flex flex-col bg-indigo-500 px-8 pt-8 rounded-md w-1/2 mr-8 hover:cursor-pointer"
-                    >
-                        <div className="text-white">
-                            <p className="font-cursive text-3xl mb-2">Created by</p>
-                            <h5 className="font-kantum text-5xl mb-2 tracking-wide">SEERVS</h5>
-                        </div>
-
-                        <img src={featuredImage} />
-                    </div>
-
-                    <VerticalCarousel/>
-                </div>
+                <PullDownScreen/>
             </main>
         </>
     );

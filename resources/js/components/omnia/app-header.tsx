@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
-import instagramIcon from '../../../resources/img/navbar/instagram-icon.png';
-import youtubeIcon from '../../../resources/img/navbar/youtube-icon.png';
-import spotifyIcon from '../../../resources/img/navbar/spotify-icon.png';
-import featuredImage from '../../../resources/img/featured/everywhere-nowhere-cover.png';
-import AppLogo from './app-logo';
-import '../../css/app-header.css';
+import instagramIcon from '../../../../resources/media/img/navbar/instagram-icon.png';
+import youtubeIcon from '../../../../resources/media/img/navbar/youtube-icon.png';
+import spotifyIcon from '../../../../resources/media/img/navbar/spotify-icon.png';
+import featuredImage from '../../../../resources/media/img/featured/everywhere-nowhere-cover.png';
+import AppLogo from '../app-logo';
+import '../../../css/app-header.css';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
