@@ -1,4 +1,3 @@
-import { dir } from 'console';
 import React from 'react';
 
 type Direction = 'top' | 'bottom' | 'left' | 'right';
@@ -8,17 +7,18 @@ interface ScribbleProps {
     className?: string;
     color?: string;
     direction?: Direction[];
+    position?: React.CSSProperties['position'];
     offsetTop?: string;
     offsetLeft?: string;
 }
 
-const Scribble: React.FC<ScribbleProps> = ({ text, className = "", color, direction = ['bottom'], offsetTop, offsetLeft }) => {
+const Scribble: React.FC<ScribbleProps> = ({ text, className = "", color, direction = ['bottom'], position, offsetTop, offsetLeft }) => {
     const ScribbleContainerStyles: React.CSSProperties = {
         display: 'flex',
         flexDirection: direction.includes('top') ? 'column-reverse' : 'column',
         alignItems: 'center',
         width: 'max-content',
-        position: 'absolute',
+        position: position || 'absolute',
         top: offsetTop,
         left: offsetLeft,
     }

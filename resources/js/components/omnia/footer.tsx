@@ -51,7 +51,7 @@ export function Footer() {
                                 <a href="#" className="hover:text-green-700 hover:underline">PayPal</a>
                             </li>
                         </ul>
-                        <p className="mt-2">
+                        <p className="text-neutral-500 mt-2">
                             If you like Omnia, consider supporting the project by donating! 
                             Your support helps us continue to develop and maintain Omnia, 
                             ensuring that we can provide you with even more features and the best possible experience!
