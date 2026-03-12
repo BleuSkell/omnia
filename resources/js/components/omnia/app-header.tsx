@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dashboard, login, register } from '@/routes';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
-import instagramIcon from '../../../../resources/media/img/navbar/instagram-icon.png';
-import youtubeIcon from '../../../../resources/media/img/navbar/youtube-icon.png';
-import spotifyIcon from '../../../../resources/media/img/navbar/spotify-icon.png';
+import instagramIcon from '../../../../resources/media/img/socials/instagram-icon.png';
+import youtubeIcon from '../../../../resources/media/img/socials/youtube-icon.png';
+import spotifyIcon from '../../../../resources/media/img/socials/spotify-icon.png';
 import featuredImage from '../../../../resources/media/img/featured/everywhere-nowhere-cover.png';
 import AppLogo from '../app-logo';
 import '../../../css/app-header.css';
@@ -44,7 +44,7 @@ const exploreNavItems: NavItem[] = [
     },
 ];
 
-export function AppHeader({ breadcrumbs = [] }: Props) {
+export function     AppHeader({ breadcrumbs = [] }: Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const page = usePage<SharedData>();
@@ -262,9 +262,11 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                     {auth.user ? (
                                         <Link
                                             href={dashboard()}
-                                            className="dashboard-link"
+                                            className="account-button bg-green-400 px-6 py-3 rounded-md text-black font-medium tracking-wide text-lg overflow-hidden"
                                         >
+                                        <span className="button-text inline-block">
                                             Dashboard
+                                        </span>
                                         </Link>
                                     ) : (
                                         <>

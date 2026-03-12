@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import promoVid from '../../../media/vid/omnia.mp4';
-import pullMe from '../../../media/img/pull-me.png';
 
 export function PullDownScreen() {
     const [isPulledDown, setPulledDown] = useState(false);
@@ -17,8 +16,8 @@ export function PullDownScreen() {
                         <h3 className="text-white text-8xl font-medium font-cursive tracking-wide mb-12">The platform</h3>
 
                         <p className='text-neutral-200 text-2xl font-light tracking-wide leading-relaxed'>
-                            Omnia was first developed by a student software developer in order to learn, experiment, and to try and enjoy the process of creating 
-                            something he could be proud of. He chose the name Omnia, which roughly translates to "everything" in Latin, because for him, it relfected the site's 
+                            Omnia was first developed by a student software developer in order to learn, experiment, and enjoy the process of creating something he 
+                            could be proud of. He chose the name Omnia, which roughly translates to "everything" in Latin, because for him, it relfected the site's 
                             purpose and direction best. A website with all sorts of fun little features and tools with plenty more being added. Functional ones, practical ones, 
                             experimental ones, whatever he wanted to try his hand on, he tried. But above all, he tried to enjoy the process of his creation(s).
                         </p>
