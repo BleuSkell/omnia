@@ -1,8 +1,8 @@
 import { Head } from '@inertiajs/react';
 import { AppHeader } from '@/components/omnia/app-header';
 import { RadialCarousel } from '@/components/omnia/radial-carousel';
-import { DraggableRadialCarousel } from '@/components/omnia/draggable-radial-carousel';
 import { PullDownScreen } from '@/components/omnia/pulldown-screen';
+import { ClickableTv } from '@/components/omnia/clickable-tv';
 import { Footer } from '@/components/omnia/footer';
 import Scribble from '@/components/omnia/scribble';
 
@@ -89,9 +89,9 @@ export default function Welcome() {
                 </div>
                 
                 <div className="mt-23">
-                    <h3 className="text-4xl font-medium tracking-wide text-center">Newest features and tools</h3>
+                    <h3 className="text-4xl font-medium tracking-wide text-center mb-8">Newest features and tools</h3>
 
-                    <DraggableRadialCarousel/>
+                    <ClickableTv/>
                 </div>
             </main>
 

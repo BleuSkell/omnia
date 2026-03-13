@@ -44,7 +44,7 @@ const exploreNavItems: NavItem[] = [
     },
 ];
 
-export function     AppHeader({ breadcrumbs = [] }: Props) {
+export function AppHeader({ breadcrumbs = [] }: Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const page = usePage<SharedData>();
