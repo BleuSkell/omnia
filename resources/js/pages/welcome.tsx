@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { AppHeader } from '@/components/omnia/app-header';
 import { RadialCarousel } from '@/components/omnia/radial-carousel';
+import { VerticalCarousel } from '@/components/omnia/vertical-carousel';
 import { PullDownScreen } from '@/components/omnia/pulldown-screen';
 import { ClickableTv } from '@/components/omnia/clickable-tv';
 import { Footer } from '@/components/omnia/footer';
@@ -15,8 +16,8 @@ export default function Welcome() {
             <main className="min-h-screen bg-[#fffefc]">
                 <div className="flex flex-col items-center justify-center text-center min-h-screen space-y-6">
                     <h1 className="text-8xl font-medium tracking-wide">Welcome to Omnia</h1>
-                    <p className="text-3xl font-light tracking-wide leading-relaxed text-center w-2/3">
-                        A website packed with all sorts of fun features and handy tools!
+                    <p className="text-2xl font-light tracking-wide leading-relaxed text-center w-2/3">
+                        A platform packed with all sorts of fun features and handy tools!
                         Such as <span className="bg-neutral-200 px-2 my-2 rounded-full">The Library</span>, a place full of handy website components. 
                         Omnia's <span className="bg-neutral-200 px-2 my-2 rounded-full">Desktop companion</span>, who keeps you company as you work.
                         And many more fun little features and tools!
@@ -27,7 +28,7 @@ export default function Welcome() {
 
                 <div className="flex flex-col items-center relative">
                     <p className="flex justify-self-center text-4xl font-light tracking-wide text-center w-1/2 w-1/2">
-                        Omnia is an ever expanding project with all sorts of features and tools. 
+                        Omnia is an ever expanding platform with all sorts of features and tools. 
                         Discover what Omnia means and what it can do.
                     </p>
                 
@@ -79,7 +80,7 @@ export default function Welcome() {
                             </h6>
 
                             <p className="text-lg font-light tracking-wide w-2/4">
-                                Omnia is an ever expanding project with new features and tools getting added over time.
+                                Omnia is an ever expanding platform with new features and tools getting added over time.
                                 You could think of it as a public workshop: there's always something new being worked on and added worth checking out.
                             </p>
                         </div>
@@ -88,10 +89,17 @@ export default function Welcome() {
                     </div>
                 </div>
                 
-                <div className="mt-23">
-                    <h3 className="text-4xl font-medium tracking-wide text-center mb-8">Newest features and tools</h3>
+                <div className="flex flex-col items-center mt-23">
+                    <h3 className="text-7xl font-medium font-cursive tracking-wide text-center mb-8">Discovery</h3>
 
-                    <ClickableTv/>
+                    <div className="flex flex-row justify-between items-center px-22 w-full">
+                        <div className="flex flex-col items-center">
+                            <h3 className="text-3xl font-medium tracking-wide text-center mb-8 w-fit">Omnia news</h3>
+                            <ClickableTv/>
+                        </div>
+
+                        <VerticalCarousel/>
+                    </div>
                 </div>
             </main>
 

@@ -16,10 +16,12 @@ export function PullDownScreen() {
                         <h3 className="text-white text-8xl font-medium font-cursive tracking-wide mb-12">The platform</h3>
 
                         <p className='text-neutral-200 text-2xl font-light tracking-wide leading-relaxed'>
-                            Omnia was first developed by a student software developer in order to learn, experiment, and enjoy the process of creating something he 
-                            could be proud of. He chose the name Omnia, which roughly translates to "everything" in Latin, because for him, it relfected the site's 
-                            purpose and direction best. A website with all sorts of fun little features and tools with plenty more being added. Functional ones, practical ones, 
-                            experimental ones, whatever he wanted to try his hand on, he tried. But above all, he tried to enjoy the process of his creation(s).
+                            Omnia was first developed by a student software developer in order to learn, experiment, and enjoy the process of creating things he 
+                            ould be proud of and share them with others.
+                            <br/>
+                            He chose the name Omnia, which roughly translates to "everything" in Latin, because for him, it represented the idea for this platform best. 
+                            He didn't want to be limited to a set idea or similar, instead, all he wanted to do was build, create, and share the things he made. 
+                            May it be practical tools or fun little distractions, you can find them all here and for free!
                         </p>
                     </div>
 
@@ -31,7 +33,7 @@ export function PullDownScreen() {
                                 style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
                                 className="absolute w-full h-full p-4 flex items-center justify-between rounded-lg
                             ">
-                                <p className="text-white text-lg">Omnia in practice</p>
+                                <p className="text-white text-lg">The idea</p>
                                 <p className="text-white text-lg">00:16</p>
                             </div>
                             
@@ -43,7 +45,7 @@ export function PullDownScreen() {
                         <h4 className="text-neutral-600 font-medium text-7xl w-48 text-left">Video</h4>
                     </div>
 
-                    <p className="text-neutral-300 text-xl mt-22">Read more about Omnia and its creator <a href="#" className="text-green-500 hover:underline">here</a></p>
+                    <p className="text-neutral-300 text-xl mt-22">You can read more about Omnia and its creator <a href="#" className="text-green-500 hover:underline">here</a></p>
                 </div>
 
                 <div className="pulldown-cord flex flex-col items-center group relative">
