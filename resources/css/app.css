@@ -157,3 +157,12 @@
         @apply bg-background text-foreground;
     }
 }
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

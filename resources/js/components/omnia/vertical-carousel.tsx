@@ -31,13 +31,11 @@ export function VerticalCarousel() {
     }
 
     if (count < 0) {
-        console.log("went before discovery length");
         setCurrentIndex((i) => i = discovery.length - 1);
         setCount((i) => i = discovery.length - 1);
     }
 
     if (count > discovery.length - 1) {
-        console.log("went past discovery length");
         setCurrentIndex((i) => i = 0);
         setCount((i) => i = 0);
     }

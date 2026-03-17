@@ -17,7 +17,7 @@ export function PullDownScreen() {
 
                         <p className='text-neutral-200 text-2xl font-light tracking-wide leading-relaxed'>
                             Omnia was first developed by a student software developer in order to learn, experiment, and enjoy the process of creating things he 
-                            ould be proud of and share them with others.
+                            could be proud of and share them with others.
                             <br/>
                             He chose the name Omnia, which roughly translates to "everything" in Latin, because for him, it represented the idea for this platform best. 
                             He didn't want to be limited to a set idea or similar, instead, all he wanted to do was build, create, and share the things he made. 
